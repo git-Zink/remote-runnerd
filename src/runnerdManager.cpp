@@ -84,7 +84,7 @@ int runnerdManager::addNewSocket(const int tcp_port)
         return -1;
     }
 
-    if (listen (new_socket, 10) != 0)
+    if (listen (new_socket, listen_queue_count) != 0)
     {
         printDebugOutput("addNewSocket:\tSet AF_INET to passive failed\n");
         return -2;
@@ -111,7 +111,7 @@ int runnerdManager::addNewSocket(const char *unex_socket)
         return -1;
     }
 
-    if (listen (new_socket, 10) != 0)
+    if (listen (new_socket, listen_queue_count) != 0)
     {
         printDebugOutput("addNewSocket:\tSet AF_LOCAL to passive failed\n");
         return -2;

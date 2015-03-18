@@ -147,7 +147,7 @@ void *runnerdWorker::selectingClients(void *arg)
         }
         pthread_mutex_unlock (&source->mutex_q_clients);
 
-        int res = poll (&fd_clients[0], fd_clients.size(), 100); //check it 1000
+        int res = poll (&fd_clients[0], fd_clients.size(), poll_timeout);
         switch (res)
         {
         case -1:
@@ -453,7 +453,7 @@ runnerdWorker::runnerdWorker()
     is_selecting = false;
     need_reload_config = false;
 
-    for (int i = 1; i < 32; ++i)
+    for (int i = 1; i < signals_count; ++i)
         signal (i, runnerdWorker::sigHandler);
 
     refreshCommands();

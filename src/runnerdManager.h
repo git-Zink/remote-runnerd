@@ -27,6 +27,8 @@ private:
     std::vector <pollfd> sockets;
     runnerdWorker worker;    
 
+    const static int listen_queue_count = 10;
+
     static void printDebugOutput(const char *message, ...);
 public:
     runnerdManager (){}

@@ -35,6 +35,8 @@
 class runnerdWorker
 {
 private:
+    static const int signals_count = 32;
+
     //all for allowed commands
     std::string config_path;
     std::set <std::string> allowed_commands;
@@ -62,6 +64,7 @@ private:
     //general thread "selecting"
     std::queue <int> q_clients;
     static const int disconnected_fd = -2;
+    static const int poll_timeout = 100;
     static bool detectDisconnected(const pollfd client);
 
     pthread_t pth_select;
